@@ -35,3 +35,6 @@ jobs:
       env:
         MATRIX_CONTEXT: ${{ toJson(matrix) }}
       run: echo "$MATRIX_CONTEXT"
+    - name: Runs only on tag push
+      if: contains(github.ref, 'refs/tags/')
+      run: echo "Tag push recognized, ref is ${{ github.ref }}."
